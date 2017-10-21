@@ -4,7 +4,7 @@ socket-chat 是 NodeJS + Express + socket.io 实现的基础版聊天室。
  
 ### 截图
 
-![](./screenshot/demo.jpg)
+![](./screenshot/demo.gif)
 
 
 ### 功能
