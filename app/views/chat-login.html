@@ -1,0 +1,48 @@
+{{extend '../templetes/base.html'}}
+
+{{block 'title'}}{{ pageTitle }}{{ /block }}
+
+
+{{block 'head'}}
+  <link rel="stylesheet" href="/static/css/normalize.css" />
+  <link rel="stylesheet" href="/static/css/chat.css" />
+  <script src="/static/js/jquery-3.2.1.min.js"></script>
+  <script src="/static/js/chat/login.js"></script>
+  <script src="/static/js/chat/iconfont.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+{{/block}}
+
+
+{{block 'content'}}
+
+    <!-- S 登录界面 -->
+    <div class="page page__login">
+        <div class="wrapper">
+            <div class="login">
+                <div class="login__avatar">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-user-default"></use>
+                    </svg>
+                </div>
+
+                <div class="login__form">
+                    <div class="form__group">
+                        <input required="required" name="name" class="form__control js-name" />
+                        <label class="form__label">用户名</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="password" required="required" name="password" class="form__control js-password"/>
+                        <label class="form__label">密码</label>
+                    </div>
+                    <div class="form__group">
+                        <button class="button js-button-login">
+                            <span>登录</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- E 登录界面 -->
+
+{{/block}}

@@ -1,0 +1,577 @@
+/* reset */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}  
+
+body {
+  font-size: 14px;
+  line-height: 1;
+  font-family: "Microsoft Yahei";
+  background-color: #6960a0;
+}
+
+.page {
+  width: 860px;
+  height: 600px;
+  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -430px;
+  margin-top: -300px;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.356);
+}
+
+
+/* 图标 */
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.icon--size-md {
+  font-size: 26px;
+}
+
+
+/* 为空提示 */
+.empty {
+  box-sizing: border-box;
+  padding: 15px 20px;
+}
+.empty--center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.empty__text {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+
+
+/* 自定义滚动条 */
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #f5f5f5;
+}
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #ebe9e8;
+}
+.scrollbar::-webkit-scrollbar-thumb{
+  height: 20px;
+  border-radius: 10px;
+  background-color: #ccc;
+}
+.scrollbar[data-default-hide="true"]::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar[data-default-hide="true"]:hover::-webkit-scrollbar {
+  display: block;
+}
+
+
+
+/*******************************
+ *
+ * login page
+ *
+ *******************************/
+.page__login {
+  width: 500px;
+  height: 320px;
+  margin-left: -250px;
+  margin-top: -160px;
+}
+.login__avatar {
+  position: relative;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto -40px;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 4px solid #fff;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login__avatar .icon {
+  font-size: 40px;
+  color: #ccc;
+  position: relative;
+  top: -10px;
+}
+
+/* 表单 */
+.login__form {
+  width: 80%;
+  margin: 40px auto;
+}
+.form__group {
+  position: relative;
+  font-size: 15px;
+  color: #808080;
+}
+.form__group + .form__group {
+  margin-top: 30px;
+}
+.form__group .button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 42px;
+  line-height: 42px;
+  color: #fff;
+  font-size: 16px;
+  background-color: rgb(18, 156, 17);
+  border-radius: 3px;
+}
+.form__group .form__label {
+  position: absolute;
+  z-index: 101;
+  left: 0;
+  top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.form__group .form__control {
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  height: 35px;
+  background: none;
+  border: none;
+  padding: 5px 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-bottom: 1px solid #ddd;
+}
+.form__group .form__control:invalid {
+  outline: none;
+}
+.form__group .form__control:focus {
+  outline: none;
+  color: #666;
+  box-shadow: 0 1px rgb(18, 156, 17);;
+  border-color: rgb(18, 156, 17);
+}
+.form__group .form__control:focus + .form__label, .form__group .form__control:valid + .form__label {
+  font-size: 11px;
+  -ms-transform: translateY(-20px);
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+
+
+/*******************************
+ *
+ * app page
+ * 
+ * http://www.jq22.com/demo/html5-slider-app-panel20151110/
+ * http://img.hb.aicdn.com/05eb94188768a98b3a65d99573f37849353a582e645ec-vRZk93
+ *
+ *******************************/
+.page__chat .wrapper {
+  display: flex;
+  overflow: hidden;
+}
+.app__menu {
+  box-sizing: border-box;
+  width: 60px;
+  height: 100%;
+  color: #808080;
+  background-color: rgb(44, 44, 44);
+  display: flex;
+  flex-direction: column;
+
+}
+.app__menu__top {
+  flex: 1;
+}
+
+/* 用户信息 */
+.user_info {
+  padding: 10px 0;
+}
+.user__avatar {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: #fff;
+  margin: 10px;
+}
+.user__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.user__name {
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 1.1;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 底部更多菜单 */
+.toggle__menu {
+  position: relative;
+  height: 60px;
+}
+.toggle__menu .button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  opacity: 0.6;
+  transition: opacity 0.25s linear;
+  font-size: 0;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+          align-items: center;
+}
+.toggle__menu .button:hover {
+  opacity: 1;
+}
+.toggle__menu .icon__menu {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+.toggle__menu__content {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 10001;
+  width: 150px;
+  background-color: rgb(51, 51, 51);
+  display: none;
+}
+[data-position="bottom-right"] .toggle__menu__content {
+  bottom: 0;
+  left: 60px;
+}
+.toggle__menu__content li {
+  list-style: none;
+}
+.toggle__menu__content li a {
+  color: #999;
+  text-decoration: none;
+  font-size: 13px;
+  display: block;
+  padding: 10px 15px;
+  height: 22px;
+  line-height: 22px;
+}
+.toggle__menu__content li a:hover {
+  background-color: rgb(70, 70, 70);
+}
+
+/* 主要功能菜单 */
+.app__menu__buttons {
+  margin: 15px 0;
+}
+.tab__handle {
+  width: 60px;
+  height: 60px;
+}
+.tab__handle a {
+  outline: none;
+  width: 60px;
+  height: 60px;
+  opacity: 0.6;
+  transition: opacity 0.25s linear;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+          align-items: center;
+}
+.tab__handle a:hover,
+.tab__handle a:active,
+.tab__handle.active a {
+  opacity: 1;
+}
+
+.tab__handle.active a {
+  color: rgb(18, 156, 17);
+}
+
+.tab__handle .icon__menu {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+.tab__handle .icon__menu path {
+  background-color: #000;
+  fill: #000;
+}
+
+
+
+/* 侧边栏 */
+.app__sidebar {
+  width: 220px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ebe9e8;
+}
+.app__sidebar__title {
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  padding: 0 20px;
+  color: #666;
+  border-bottom: 1px solid rgb(225, 225, 225);
+} 
+.app__sidebar__content {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+
+
+/* 主体功能 */
+.app__main {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+.app__main__title {
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  padding: 0 20px;
+  color: #666;
+  border-bottom: 1px solid rgb(220, 220, 220);
+} 
+.app__main__content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* 聊天窗口 */
+.chat__content__wrapper {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+}
+.chat__content {
+  overflow: hidden;
+}
+.chat__enter {
+  height: 144px;
+  border-top: 1px solid rgb(220, 220, 220);
+}
+.chat__enter.focus {
+  background-color: #fff;
+}
+.chat__enter__buttons {
+  text-align: right;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.chat__enter__buttons button {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 13px;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 15px;
+  background-color: #f7f7f7;
+}
+.chat__enter__buttons button:hover {
+  color: #fff;
+  background-color: rgb(18, 156, 17);
+  border-color:rgb(18, 156, 17);
+}
+.chat__enter__textarea {
+  height: 85px;
+  margin: 10px 20px;
+}
+.chat__enter__textarea textarea {
+  border: none;
+  resize: none;
+  outline: none;
+  /* background-color: transparent; */
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+
+
+/* 单项 左右布局  */
+.meta {
+  outline: none;
+  -moz-outline-style: none;
+  display: flex;
+  padding: 15px;
+  text-decoration: none;
+}
+.meta:hover,
+.meta:active {
+  outline: none;
+  -moz-outline-style: none;
+  background-color: #dbdbdb;
+}
+.meta.active {
+  background-color: #cacaca;
+}
+.meta__img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.meta__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.meta__text {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: #333;
+}
+.meta__title {
+  margin-top: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.meta__subtitle {
+  margin-top: 7px;
+  font-size: 0.8em;
+  opacity: 0.5;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 系统信息 */
+.chat__notice {
+  text-align: center;
+  margin: 10px 15px;
+}
+.chat__notice span {
+  font-size: 12px;
+  color: #fff;
+  background-color: #ccc;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+
+/* 聊天信息 */
+.chat__message {
+  margin: 15px 15px;
+  overflow: hidden;
+}
+.chat__message__avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  float: left;
+}
+.chat__message__avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.chat__message__content {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+  border-radius: 3px;
+  line-height: 1.5;
+  font-size: 13px;
+  word-break: break-all;
+  padding: 10px;
+  position: relative;
+  max-width: calc(100% - 200px);
+}
+.chat__message__content:before {
+  content: " ";
+  position: absolute;
+  top: 9px;
+  right: 100%;
+  border: 6px solid transparent;
+  border-right-color: #fff;
+}
+.chat__message[data-position="right"] .chat__message__avatar {
+  float: right;
+  margin-right: 0;
+  margin-left: 10px;
+}
+.chat__message[data-position="right"] .chat__message__content {
+  float: right;
+  background-color: #b2e281;
+}
+.chat__message[data-position="right"] .chat__message__content:before {
+  right: inherit;
+  left: 100%;
+  border-right-color: transparent;
+  border-left-color: #b2e281;
+}
+
+
+/* 聊天列表 */
+.app__list {}

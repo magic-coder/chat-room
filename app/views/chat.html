@@ -1,0 +1,209 @@
+{{extend '../templetes/base.html'}}
+
+{{block 'title'}}{{ pageTitle }}{{ /block }}
+
+
+{{block 'head'}}
+  <link rel="stylesheet" href="/static/css/normalize.css" />
+  <link rel="stylesheet" href="/static/css/chat.css" />
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/static/js/chat/iconfont.js"></script>
+  <script src="/static/js/jquery-3.2.1.min.js"></script>
+  <script src="/static/js/chat/socket.chat.js"></script>
+  <script src="/static/js/chat/main.js"></script>
+{{/block}}
+
+
+{{block 'content'}}
+
+    <!-- S 聊天窗口 -->
+    <div class="page page__chat">
+        <div class="wrapper">
+            <div class="app__menu">
+                <div class="app__menu__top">
+                    <div class="user_info" data-user-id="{{ userInfo.id }}">
+                        <div class="user__avatar"><img src="{{ userInfo.avatar }}" /></div>
+                        <div class="user__name">{{ userInfo.nickname }}</div>
+                    </div>
+                    <div class="app__menu__buttons">
+                        <div class="tab__handle active">
+                            <a href="javascript:;" title="聊天">
+                                <svg class="icon icon--size-md" aria-hidden="true">
+                                    <use xlink:href="#icon-chat-fill"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tab__handle">
+                            <a href="javascript:;" title="好友">
+                                <svg class="icon icon--size-md" aria-hidden="true">
+                                    <use xlink:href="#icon-address-book"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="app__menu__bottom">
+                    <div class="toggle__menu" data-position="bottom-right">
+                        <a href="javascript:;" class="button js-dropdown-toggle" data-dropdown-target="dropdown-bottom">
+                            <svg class="icon icon--size-md" aria-hidden="true">
+                                <use xlink:href="#icon-menu"></use>
+                            </svg>
+                        </a>
+                        <ul class="toggle__menu__content" data-dropdown-name="dropdown-bottom" aria-expanded="false">
+                            <li><a href="javascript:;">意见反馈</a></li>
+                            <li><a href="javascript:;">设置</a></li>
+                            <li><a href="javascript:;" class="js-logout">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app__sidebar">
+                <div class="app__sidebar__title">最近联系</div>
+                <div class="app__sidebar__content scrollbar" data-default-hide="true">
+                    {{if chatRecently.length === 0}}
+                        <div class="empty empty--center">
+                            <div class="empty__text">暂无最近联系人~</div>
+                        </div>
+                    {{else}}
+                        <div class="chat__list">
+                            {{each chatRecently chat}}
+                            {{include '../components/item/item.html' chat}}
+                            <!-- <a href="javascript:;" class="meta">
+                                <div class="meta__img">
+                                    <img src="{{ chat.avatar }}" alt="" />
+                                </div>
+                                <div class="meta__text">
+                                    <div class="meta__title">{{ chat.nickname }}</div>
+                                    <div class="meta__subtitle">{{ chat.latestMsg }}</div>
+                                </div>
+                            </a> -->
+                            {{/each}} 
+    
+                            <!-- <a href="" class="meta">
+                                <div class="meta__img">
+                                    <img src="../static/images/2.jpg" alt="" />
+                                </div>
+                                <div class="meta__text">
+                                    <div class="meta__title">葬爱家族-奶少</div>
+                                    <div class="meta__subtitle">土豪，和你做朋友可好？</div>
+                                </div>
+                            </a>
+                            <a href="" class="meta active">
+                                <div class="meta__img">
+                                    <img src="../static/images/3.jpg" alt="" />
+                                </div>
+                                <div class="meta__text">
+                                    <div class="meta__title">王少</div>
+                                    <div class="meta__subtitle">小米MIX2没宣传的那么好</div>
+                                </div>
+                            </a> -->
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="app__main">
+                <div class="app__main__title">№葬爱灬ξ家族</div>
+                <div class="app__main__content scrollbar" data-default-hide="true">
+                    <div class="chat__content__wrapper scrollbar">
+                        <div class="chat__content js-chat-content">
+                            <!-- 
+                            <div class="chat__notice">
+                                <span>系统信息：老王已加入群聊</span>
+                            </div>
+
+                            <div class="chat__message" data-position="left">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/3.jpg" />
+                                </div>
+                                <div class="chat__message__content">外面豆浆是豆浆粉冲的</div>
+                            </div>
+                            
+                            <div class="chat__message" data-position="left">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/3.jpg" />
+                                </div>
+                                <div class="chat__message__content">自己家里现磨豆浆我妈说很热气的</div>
+                            </div>
+
+                            <div class="chat__message" data-position="right">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/4.jpg" />
+                                </div>
+                                <div class="chat__message__content">好久没吃过早饭了</div>
+                            </div>
+
+                            <div class="chat__message" data-position="right">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/4.jpg" />
+                                </div>
+                                <div class="chat__message__content">好羡慕</div>
+                            </div>
+
+                            <div class="chat__message" data-position="right">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/4.jpg" />
+                                </div>
+                                <div class="chat__message__content">有早饭吃</div>
+                            </div>
+
+                            <div class="chat__notice">
+                                <span>系统信息：老王已退出群聊</span>
+                            </div>
+        
+                            <div class="chat__message" data-position="left">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/3.jpg" />
+                                </div>
+                                <div class="chat__message__content">外面豆浆是豆浆粉冲的</div>
+                            </div>
+                            
+                            <div class="chat__message" data-position="left">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/3.jpg" />
+                                </div>
+                                <div class="chat__message__content">自己家里现磨豆浆我妈说很热气的</div>
+                            </div>
+
+                            <div class="chat__message" data-position="right">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/4.jpg" />
+                                </div>
+                                <div class="chat__message__content">好久没吃过早饭了</div>
+                            </div>
+
+                            <div class="chat__message" data-position="right">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/4.jpg" />
+                                </div>
+                                <div class="chat__message__content">好羡慕</div>
+                            </div>
+
+                            <div class="chat__message" data-position="right">
+                                <div class="chat__message__avatar">
+                                    <img src="../static/images/4.jpg" />
+                                </div>
+                                <div class="chat__message__content">有早饭吃</div>
+                            </div>
+                            -->
+                        </div>                        
+                    </div>
+                    <div class="chat__enter">
+                        <div class="chat__enter__tools"></div>
+                        <div class="chat__enter__textarea">
+                            <textarea class="js-textarea"></textarea>
+                        </div>
+                        <div class="chat__enter__buttons">
+                            <button class="js-send">发送(S)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- E 聊天窗口 -->
+
+
+{{/block}}
